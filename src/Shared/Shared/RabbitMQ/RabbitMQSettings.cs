@@ -9,5 +9,7 @@ namespace Shared.RabbitMQ
     public static class RabbitMQSettings
     {
         public const string Stock_OrderCreatedEventQueue = "stock-order-created-queue";
+        public const string Payment_StockReservedEventQueue = "payment-stock-reserved-queue";
+        
     }
 }
