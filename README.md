@@ -1,6 +1,6 @@
 # Saga-Choreography
 
-Saga-Choreography yöntemi ile sipariş similasyonu geliştirmesi. 
+Saga-Choreography yöntemi ile sipariş simülasyonu. 
 
 Sipariş Servisine gelen bir talebin alınıp stok servisinde stok kontrolü yapıldıktan sonra ödeme işleminin yapılması süreci geliştirilmesi yapılmıştır.
 
