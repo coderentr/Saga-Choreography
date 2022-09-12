@@ -15,16 +15,23 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMassTransit(configure =>
 {
     configure.AddConsumer<OrderCreatedEventConsumer>();
+    configure.AddConsumer<PaymentFailedEventConsumer>();
     configure.UsingRabbitMq((context, configurator) =>
     {
         configurator.Host(builder.Configuration.GetConnectionString("RabbitMQ"));
-        configurator.ReceiveEndpoint(RabbitMQSettings.Stock_OrderCreatedEventQueue, e=> 
-        e.ConfigureConsumer<OrderCreatedEventConsumer>(context))
+        configurator.ReceiveEndpoint(RabbitMQSettings.Stock_OrderCreatedEventQueue, e =>
+        e.ConfigureConsumer<OrderCreatedEventConsumer>(context));
+        configurator.ReceiveEndpoint(RabbitMQSettings.Stock_PaymentFailedEventQueue, e => 
+        e.ConfigureConsumer<PaymentFailedEventConsumer>(context));
     });
 });
 builder.Services.AddSingleton<MongoDbService>();
 
+
+
 var app = builder.Build();
+
+app.CreateDummyData();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

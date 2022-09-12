@@ -3,9 +3,9 @@ using Order.API.Models.Entities;
 
 namespace Order.API.Models
 {
-    public class OrderDBContaxt:DbContext
+    public class OrderDBContext:DbContext
     {
-        public OrderDBContaxt(DbContextOptions optons):base(optons)
+        public OrderDBContext(DbContextOptions optons):base(optons)
         {
 
         }
