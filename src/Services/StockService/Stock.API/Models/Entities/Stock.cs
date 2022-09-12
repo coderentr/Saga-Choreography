@@ -20,6 +20,4 @@ namespace Stock.API.Models.Entities
         [BsonElement(Order = 3)]
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
-
-}
 }

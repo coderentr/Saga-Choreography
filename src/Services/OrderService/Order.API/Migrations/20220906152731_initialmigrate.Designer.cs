@@ -11,7 +11,7 @@ using Order.API.Models;
 
 namespace Order.API.Migrations
 {
-    [DbContext(typeof(OrderDBContaxt))]
+    [DbContext(typeof(OrderDBContext))]
     [Migration("20220906152731_initialmigrate")]
     partial class initialmigrate
     {

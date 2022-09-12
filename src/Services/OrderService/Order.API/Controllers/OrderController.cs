@@ -13,9 +13,9 @@ namespace Order.API.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private readonly OrderDBContaxt _context;
+        private readonly OrderDBContext _context;
         readonly IPublishEndpoint _publishEndpoint;
-        public OrderController(OrderDBContaxt context, IPublishEndpoint publishEndpoint)
+        public OrderController(OrderDBContext context, IPublishEndpoint publishEndpoint)
         {
             _context = context;
             _publishEndpoint = publishEndpoint; 
