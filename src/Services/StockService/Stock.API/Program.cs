@@ -1,4 +1,7 @@
 using MassTransit;
+using Shared.RabbitMQ;
+using Stock.API.Consumers;
+using Stock.API.mongo;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +14,15 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMassTransit(configure =>
 {
+    configure.AddConsumer<OrderCreatedEventConsumer>();
     configure.UsingRabbitMq((context, configurator) =>
     {
         configurator.Host(builder.Configuration.GetConnectionString("RabbitMQ"));
+        configurator.ReceiveEndpoint(RabbitMQSettings.Stock_OrderCreatedEventQueue, e=> 
+        e.ConfigureConsumer<OrderCreatedEventConsumer>(context))
     });
 });
+builder.Services.AddSingleton<MongoDbService>();
 
 var app = builder.Build();
 
